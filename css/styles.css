@@ -1,0 +1,87 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+}
+
+.calc-btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: 3;
+  gap: 3px;
+}
+
+.clear-btn {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.clear {
+  font-size: 24px;
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.calculator {
+  width: 300px;
+  height: 500px;
+  border: 3px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+}
+
+.row > button {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  font-size: 24px;
+}
+
+.screen {
+  border: 2px solid red;
+  border-radius: 10px;
+  height: 75px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 36px;
+  flex: 1;
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+}
