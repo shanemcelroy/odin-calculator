@@ -56,13 +56,15 @@ function subtract(a, b) {
 }
 
 function multiply(a, b) {
-  return a * b;
+  let answer = a * b;
+  return parseFloat(answer.toFixed(2));
 }
 
 function divide(a, b) {
   if (b === 0) {
     alert("You can't divide by 0!");
   } else {
-    return a / b;
+    let answer = a / b;
+    return parseFloat(answer.toFixed(2));
   }
 }
