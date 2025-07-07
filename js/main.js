@@ -14,6 +14,10 @@ buttons.addEventListener("click", (e) => {
     firstNumber = display.textContent;
     operator = value;
     clearScreen();
+  } else if (value === "=") {
+    secondNumber = display.textContent;
+    clearScreen();
+    display.textContent = operate(firstNumber, secondNumber, operator);
   } else {
     display.textContent += value;
   }
@@ -44,7 +48,7 @@ function operate(n1, n2, operator) {
 }
 
 function add(a, b) {
-  return a + b;
+  return Number(a) + Number(b);
 }
 
 function subtract(a, b) {
