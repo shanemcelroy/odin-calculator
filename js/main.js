@@ -60,5 +60,9 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  return a / b;
+  if (b === "0") {
+    alert("You can't divide by 0!");
+  } else {
+    return a / b;
+  }
 }
