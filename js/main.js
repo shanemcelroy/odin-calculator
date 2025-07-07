@@ -11,11 +11,11 @@ buttons.addEventListener("click", (e) => {
   let value = button.textContent;
 
   if (value === "+" || value === "-" || value === "*" || value === "/") {
-    firstNumber = display.textContent;
+    firstNumber = Number(display.textContent);
     operator = value;
     clearScreen();
   } else if (value === "=") {
-    secondNumber = display.textContent;
+    secondNumber = Number(display.textContent);
     clearScreen();
     display.textContent = operate(firstNumber, secondNumber, operator);
   } else {
@@ -48,7 +48,7 @@ function operate(n1, n2, operator) {
 }
 
 function add(a, b) {
-  return Number(a) + Number(b);
+  return a + b;
 }
 
 function subtract(a, b) {
@@ -60,7 +60,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  if (b === "0") {
+  if (b === 0) {
     alert("You can't divide by 0!");
   } else {
     return a / b;
