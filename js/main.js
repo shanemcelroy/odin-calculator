@@ -25,11 +25,13 @@ buttons.addEventListener("click", (e) => {
 
 reset.addEventListener("click", (e) => {
   e.stopPropagation();
-  clearScreen();
+  clearData();
 });
 
-function clearScreen() {
+function clearData() {
   display.textContent = "";
+  firstNumber = 0;
+  secondNumber = 0;
 }
 
 function operate(n1, n2, operator) {
@@ -57,7 +59,7 @@ function subtract(a, b) {
 
 function multiply(a, b) {
   let answer = a * b;
-  return parseFloat(answer.toFixed(2));
+  return parseFloat(answer.toFixed);
 }
 
 function divide(a, b) {
