@@ -10,7 +10,12 @@ buttons.addEventListener("click", (e) => {
   let button = e.target;
   let value = button.textContent;
 
-  display.textContent = value;
+  if (value === "+" || value === "-" || value === "*" || value === "/") {
+    // e.stopPropagation();
+    clearScreen();
+  } else {
+    display.textContent += value;
+  }
 });
 
 reset.addEventListener("click", (e) => {
