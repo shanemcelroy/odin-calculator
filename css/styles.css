@@ -18,6 +18,10 @@ body {
   flex: 3;
 }
 
+.calculator {
+  background-color: #fef65c;
+}
+
 .calc-btns {
   display: flex;
   flex-direction: column;
@@ -36,6 +40,8 @@ body {
   flex: 1;
   padding: 10px;
   border-radius: 10px;
+  border: 2px solid black;
+  background-color: #fee745;
 }
 
 .container {
@@ -66,15 +72,17 @@ body {
   height: 50px;
   width: 50px;
   font-size: 24px;
+  background-color: #fee745;
 }
 
 .screen {
-  border: 2px solid red;
+  border: 2px solid black;
   border-radius: 10px;
   height: 75px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  background-color: #fee745;
 }
 
 .screen > p {
@@ -87,6 +95,7 @@ body {
   margin-bottom: 20px;
   font-size: 36px;
   flex: 1;
+  color: black;
 }
 
 .title-container {
