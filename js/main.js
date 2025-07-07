@@ -28,6 +28,10 @@ reset.addEventListener("click", (e) => {
   clearData();
 });
 
+function clearScreen() {
+  display.textContent = "";
+}
+
 function clearData() {
   display.textContent = "";
   firstNumber = 0;
@@ -59,7 +63,7 @@ function subtract(a, b) {
 
 function multiply(a, b) {
   let answer = a * b;
-  return parseFloat(answer.toFixed);
+  return parseFloat(answer.toFixed(2));
 }
 
 function divide(a, b) {
