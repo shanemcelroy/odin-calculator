@@ -12,6 +12,7 @@ buttons.addEventListener("click", (e) => {
 
   if (value === "+" || value === "-" || value === "*" || value === "/") {
     firstNumber = display.textContent;
+    operator = value;
     clearScreen();
   } else {
     display.textContent += value;
