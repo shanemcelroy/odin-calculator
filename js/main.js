@@ -1,6 +1,6 @@
-let firstNumber = 10;
-let secondNumber = 5;
-let operator = "+";
+let firstNumber;
+let secondNumber;
+let operator;
 
 const buttons = document.querySelector(".btn-container");
 const display = document.querySelector(".screen-text");
@@ -11,7 +11,7 @@ buttons.addEventListener("click", (e) => {
   let value = button.textContent;
 
   if (value === "+" || value === "-" || value === "*" || value === "/") {
-    // e.stopPropagation();
+    firstNumber = display.textContent;
     clearScreen();
   } else {
     display.textContent += value;
