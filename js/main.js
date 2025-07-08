@@ -52,6 +52,10 @@ deleteBtn.addEventListener("click", (e) => {
   e.stopPropagation();
   let input = display.textContent;
   if (input.length !== 0) {
+    let deleted = input.slice(-1);
+    if (deleted === ".") {
+      period.disabled = false;
+    }
     let newNum = input.slice(0, -1);
     display.textContent = newNum;
   }
