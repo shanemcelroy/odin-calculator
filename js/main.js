@@ -1,6 +1,6 @@
-let firstNumber;
-let secondNumber;
-let operator;
+let firstNumber = null;
+let secondNumber = null;
+let operator = null;
 
 const buttons = document.querySelector(".btn-container");
 const display = document.querySelector(".screen-text");
@@ -11,13 +11,26 @@ buttons.addEventListener("click", (e) => {
   let value = button.textContent;
 
   if (value === "+" || value === "-" || value === "*" || value === "/") {
-    firstNumber = Number(display.textContent);
+    if (firstNumber !== null && operator !== null) {
+      secondNumber = Number(display.textContent);
+      result = operate(firstNumber, secondNumber, operator);
+      display.textContent = result;
+      firstNumber = result;
+    } else {
+      firstNumber = Number(display.textContent);
+    }
+
     operator = value;
-    clearScreen();
+    display.textContent = "";
   } else if (value === "=") {
-    secondNumber = Number(display.textContent);
-    clearScreen();
-    display.textContent = operate(firstNumber, secondNumber, operator);
+    if (firstNumber !== null && operator !== null) {
+      secondNumber = Number(display.textContent);
+      result = operate(firstNumber, secondNumber, operator);
+      display.textContent = result;
+      firstNumber = result;
+      operator = null;
+      secondNumber = null;
+    }
   } else {
     display.textContent += value;
   }
@@ -74,3 +87,13 @@ function divide(a, b) {
     return parseFloat(answer.toFixed(2));
   }
 }
+
+// While loop? While true, do code. if clear is hit, reset everything and set to false
+
+// If user hits an operator
+// Check if theres a first number
+// If no first number, store display as first number and allow user to enter another number
+// Else If first number exists, store display as second number, perform calculation, store display as first number
+// Else If user hits =
+// If first number, store display as second number, perform calculation, store input as first number
+// Else if no first number, do nothing
