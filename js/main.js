@@ -4,7 +4,7 @@ let operator = null;
 
 const buttons = document.querySelector(".btn-container");
 const display = document.querySelector(".screen-text");
-const reset = document.querySelector(".clear");
+const clear = document.querySelector(".clear");
 
 buttons.addEventListener("click", (e) => {
   let button = e.target;
@@ -36,7 +36,7 @@ buttons.addEventListener("click", (e) => {
   }
 });
 
-reset.addEventListener("click", (e) => {
+clear.addEventListener("click", (e) => {
   e.stopPropagation();
   clearData();
 });
