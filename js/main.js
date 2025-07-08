@@ -6,6 +6,7 @@ const buttons = document.querySelector(".btn-container");
 const display = document.querySelector(".screen-text");
 const clear = document.querySelector(".clear");
 const period = document.querySelector(".period");
+const deleteBtn = document.querySelector(".delete");
 
 buttons.addEventListener("click", (e) => {
   let button = e.target;
@@ -45,6 +46,15 @@ buttons.addEventListener("click", (e) => {
 clear.addEventListener("click", (e) => {
   e.stopPropagation();
   clearData();
+});
+
+deleteBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  let input = display.textContent;
+  if (input.length !== 0) {
+    let newNum = input.slice(0, -1);
+    display.textContent = newNum;
+  }
 });
 
 function clearScreen() {
