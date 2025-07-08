@@ -105,5 +105,3 @@ function divide(a, b) {
     return parseFloat(answer.toFixed(2));
   }
 }
-
-// If display has a decimal point, don't allow another decimal to be entered
