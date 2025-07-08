@@ -7,6 +7,64 @@ const display = document.querySelector(".screen-text");
 const clear = document.querySelector(".clear");
 const period = document.querySelector(".period");
 const deleteBtn = document.querySelector(".delete");
+const allowedKeys = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "+",
+  "-",
+  "*",
+  "/",
+  ".",
+  "=",
+  "Backspace",
+  "Enter",
+];
+
+document.addEventListener("keydown", (e) => {
+  if (allowedKeys.includes(e.key)) {
+    let key = e.key;
+
+    if (key === "+" || key === "-" || key === "*" || key === "/") {
+      if (firstNumber !== null && operator !== null) {
+        secondNumber = Number(display.textContent);
+        result = operate(firstNumber, secondNumber, operator);
+        display.textContent = result;
+        firstNumber = result;
+        period.disabled = false;
+      } else {
+        period.disabled = false;
+        firstNumber = Number(display.textContent);
+      }
+
+      operator = key;
+      display.textContent = "";
+    } else if (key === "Enter") {
+      if (firstNumber !== null && operator !== null) {
+        secondNumber = Number(display.textContent);
+        result = operate(firstNumber, secondNumber, operator);
+        display.textContent = result;
+        firstNumber = result;
+        operator = null;
+        secondNumber = null;
+      }
+    } else if (key === "Backspace") {
+      deleteInput();
+    } else {
+      display.textContent += key;
+      if (display.textContent.includes(".")) {
+        period.disabled = true;
+      }
+    }
+  }
+});
 
 buttons.addEventListener("click", (e) => {
   let button = e.target;
@@ -50,6 +108,10 @@ clear.addEventListener("click", (e) => {
 
 deleteBtn.addEventListener("click", (e) => {
   e.stopPropagation();
+  deleteInput();
+});
+
+function deleteInput() {
   let input = display.textContent;
   if (input.length !== 0) {
     let deleted = input.slice(-1);
@@ -59,7 +121,7 @@ deleteBtn.addEventListener("click", (e) => {
     let newNum = input.slice(0, -1);
     display.textContent = newNum;
   }
-});
+}
 
 function clearScreen() {
   display.textContent = "";
