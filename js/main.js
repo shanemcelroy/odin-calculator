@@ -47,8 +47,9 @@ function clearScreen() {
 
 function clearData() {
   display.textContent = "";
-  firstNumber = 0;
-  secondNumber = 0;
+  firstNumber = null;
+  secondNumber = null;
+  operator = null;
 }
 
 function operate(n1, n2, operator) {
