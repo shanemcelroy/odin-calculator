@@ -5,6 +5,7 @@ let operator = null;
 const buttons = document.querySelector(".btn-container");
 const display = document.querySelector(".screen-text");
 const clear = document.querySelector(".clear");
+const period = document.querySelector(".period");
 
 buttons.addEventListener("click", (e) => {
   let button = e.target;
@@ -16,7 +17,9 @@ buttons.addEventListener("click", (e) => {
       result = operate(firstNumber, secondNumber, operator);
       display.textContent = result;
       firstNumber = result;
+      period.disabled = false;
     } else {
+      period.disabled = false;
       firstNumber = Number(display.textContent);
     }
 
@@ -33,6 +36,9 @@ buttons.addEventListener("click", (e) => {
     }
   } else {
     display.textContent += value;
+    if (display.textContent.includes(".")) {
+      period.disabled = true;
+    }
   }
 });
 
@@ -47,6 +53,7 @@ function clearScreen() {
 
 function clearData() {
   display.textContent = "";
+  period.disabled = false;
   firstNumber = null;
   secondNumber = null;
   operator = null;
@@ -88,3 +95,5 @@ function divide(a, b) {
     return parseFloat(answer.toFixed(2));
   }
 }
+
+// If display has a decimal point, don't allow another decimal to be entered
