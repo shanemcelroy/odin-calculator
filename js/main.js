@@ -30,75 +30,13 @@ const allowedKeys = [
 
 document.addEventListener("keydown", (e) => {
   if (allowedKeys.includes(e.key)) {
-    let key = e.key;
-
-    if (key === "+" || key === "-" || key === "*" || key === "/") {
-      if (firstNumber !== null && operator !== null) {
-        secondNumber = Number(display.textContent);
-        result = operate(firstNumber, secondNumber, operator);
-        display.textContent = result;
-        firstNumber = result;
-        period.disabled = false;
-      } else {
-        period.disabled = false;
-        firstNumber = Number(display.textContent);
-      }
-
-      operator = key;
-      display.textContent = "";
-    } else if (key === "Enter") {
-      if (firstNumber !== null && operator !== null) {
-        secondNumber = Number(display.textContent);
-        result = operate(firstNumber, secondNumber, operator);
-        display.textContent = result;
-        firstNumber = result;
-        operator = null;
-        secondNumber = null;
-      }
-    } else if (key === "Backspace") {
-      deleteInput();
-    } else {
-      display.textContent += key;
-      if (display.textContent.includes(".")) {
-        period.disabled = true;
-      }
-    }
+    handleInput(e.key);
   }
 });
 
 buttons.addEventListener("click", (e) => {
-  let button = e.target;
-  let value = button.textContent;
-
-  if (value === "+" || value === "-" || value === "*" || value === "/") {
-    if (firstNumber !== null && operator !== null) {
-      secondNumber = Number(display.textContent);
-      result = operate(firstNumber, secondNumber, operator);
-      display.textContent = result;
-      firstNumber = result;
-      period.disabled = false;
-    } else {
-      period.disabled = false;
-      firstNumber = Number(display.textContent);
-    }
-
-    operator = value;
-    display.textContent = "";
-  } else if (value === "=") {
-    if (firstNumber !== null && operator !== null) {
-      secondNumber = Number(display.textContent);
-      result = operate(firstNumber, secondNumber, operator);
-      display.textContent = result;
-      firstNumber = result;
-      operator = null;
-      secondNumber = null;
-    }
-  } else {
-    display.textContent += value;
-    if (display.textContent.includes(".")) {
-      period.disabled = true;
-    }
-  }
+  let value = e.target.textContent;
+  handleInput(value);
 });
 
 clear.addEventListener("click", (e) => {
@@ -110,6 +48,39 @@ deleteBtn.addEventListener("click", (e) => {
   e.stopPropagation();
   deleteInput();
 });
+
+function handleInput(value) {
+  if (["+", "-", "*", "/"].includes(value)) {
+    if (firstNumber !== null && operator !== null) {
+      secondNumber = Number(display.textContent);
+      result = operate(firstNumber, secondNumber, operator);
+      display.textContent = result;
+      firstNumber = result;
+      period.disabled = false;
+    } else {
+      period.disabled = false;
+      firstNumber = Number(display.textContent);
+    }
+    operator = value;
+    display.textContent = "";
+  } else if (value === "=" || value === "Enter") {
+    if (firstNumber !== null && operator !== null) {
+      secondNumber = Number(display.textContent);
+      result = operate(firstNumber, secondNumber, operator);
+      display.textContent = result;
+      firstNumber = result;
+      operator = null;
+      secondNumber = null;
+    }
+  } else if (value === "Backspace") {
+    deleteInput();
+  } else {
+    display.textContent += value;
+    if (display.textContent.includes(".")) {
+      period.disabled = true;
+    }
+  }
+}
 
 function deleteInput() {
   let input = display.textContent;
