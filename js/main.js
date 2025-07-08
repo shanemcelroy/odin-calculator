@@ -87,13 +87,3 @@ function divide(a, b) {
     return parseFloat(answer.toFixed(2));
   }
 }
-
-// While loop? While true, do code. if clear is hit, reset everything and set to false
-
-// If user hits an operator
-// Check if theres a first number
-// If no first number, store display as first number and allow user to enter another number
-// Else If first number exists, store display as second number, perform calculation, store display as first number
-// Else If user hits =
-// If first number, store display as second number, perform calculation, store input as first number
-// Else if no first number, do nothing
